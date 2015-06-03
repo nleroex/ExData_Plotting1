@@ -2,7 +2,7 @@ BIG <- read.table("household_power_consumption.txt", sep = ";", header=T)
 BIG$Date <- as.Date(BIG$Date, format="%d/%m/%Y")
 power <- BIG[BIG$Date >= as.Date("2007-02-01") & BIG$Date <= as.Date("2007-02-02"),]
 daylist <- weekdays(power$Date)
-summary(power4=="Thursday")
+summary(daylist=="Thursday")
 power$Sub_metering_1 <- as.numeric(as.character(power$Sub_metering_1))
 power$Sub_metering_2 <- as.numeric(as.character(power$Sub_metering_2))
 power$Sub_metering_3 <- as.numeric(as.character(power$Sub_metering_3))
