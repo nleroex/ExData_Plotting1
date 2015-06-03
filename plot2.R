@@ -1,0 +1,10 @@
+BIG <- read.table("household_power_consumption.txt", sep = ";", header=T)
+BIG$Date <- as.Date(BIG$Date, format="%d/%m/%Y")
+power <- BIG[BIG$Date >= as.Date("2007-02-01") & BIG$Date <= as.Date("2007-02-02"),]
+daylist <- weekdays(power$Date)
+summary(daylist=="Thursday")
+power$Global_active_power <- as.numeric(as.character(power$Global_active_power))
+plot(power$Global_active_power, type="l", ylab = "Global Active Power (kilowatts)", xlab = "", xaxt="n")
+axis(1, at = c(1,1441,2881), labels=c("Thu", "Fri", "Sat"))
+dev.copy(png, file="plot2.png", width = 480, height = 480)
+dev.off()
